@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Encryption System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 File Encryption System</h1>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="encrypt">Encrypt File</button>
+            <button class="tab-btn" data-tab="decrypt">Decrypt File</button>
+        </div>
+
+        <!-- Encrypt Tab -->
+        <div class="tab-content active" id="encrypt">
+            <div class="card">
+                <h2>Encrypt Your File</h2>
+                <div class="upload-area" id="encryptUploadArea">
+                    <input type="file" id="encryptFileInput" hidden>
+                    <div class="upload-icon">📁</div>
+                    <p>Click to upload or drag & drop</p>
+                    <span class="file-name" id="encryptFileName"></span>
+                </div>
+                
+                <div class="input-group">
+                    <label for="encryptPassword">Password:</label>
+                    <input type="password" id="encryptPassword" placeholder="Enter password">
+                    <span class="toggle-password" onclick="togglePassword('encryptPassword')">👁️</span>
+                </div>
+
+                <div class="input-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm password">
+                    <span class="toggle-password" onclick="togglePassword('confirmPassword')">👁️</span>
+                </div>
+
+                <button class="btn btn-primary" id="encryptBtn">
+                    <span class="btn-text">Encrypt & Download</span>
+                    <span class="spinner" style="display: none;">⏳</span>
+                </button>
+
+                <div class="message" id="encryptMessage"></div>
+            </div>
+        </div>
+
+        <!-- Decrypt Tab -->
+        <div class="tab-content" id="decrypt">
+            <div class="card">
+                <h2>Decrypt Your File</h2>
+                <div class="upload-area" id="decryptUploadArea">
+                    <input type="file" id="decryptFileInput" hidden>
+                    <div class="upload-icon">📁</div>
+                    <p>Click to upload encrypted file</p>
+                    <span class="file-name" id="decryptFileName"></span>
+                </div>
+                
+                <div class="input-group">
+                    <label for="decryptPassword">Password:</label>
+                    <input type="password" id="decryptPassword" placeholder="Enter password">
+                    <span class="toggle-password" onclick="togglePassword('decryptPassword')">👁️</span>
+                </div>
+
+                <button class="btn btn-primary" id="decryptBtn">
+                    <span class="btn-text">Decrypt & Download</span>
+                    <span class="spinner" style="display: none;">⏳</span>
+                </button>
+
+                <div class="message" id="decryptMessage"></div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>ℹ️ How it works:</h3>
+            <ul>
+                <li><strong>Encryption:</strong> Uses AES-GCM 256-bit encryption</li>
+                <li><strong>Security:</strong> Password is never stored, only used for encryption/decryption</li>
+                <li><strong>Process:</strong> All encryption happens locally in your browser</li>
+                <li><strong>Note:</strong> Keep your password safe - files cannot be recovered without it!</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
